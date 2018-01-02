@@ -1,22 +1,48 @@
-<!-- Nav -->
-<nav id="layout-nav" class="navbar navbar-inverse navbar-fixed-top navbar-autohide" role="navigation">
+<section id="bc_header">
     <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                <span class="sr-only">Toggle navigation</span>
+        <span class="row" id="header-top-row">
+            <div class="col-xs-12 col-md-7 col-lg-8">
+                <div class="header-container">
+                    <a href="/" id="header-logo-link">
+                        <img alt="business comparison" id="header-logo" src="/themes/demo/assets/images/logo.svg"/>
+                    </a>
+                    <span class="tagline">
+                        Helping you <span class="green-text">compare, </span> <br class="visible-xs"/><span
+                            class="yellow-text">save </span>and<span class="pink-text"> succeed</span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-xs-2 visible-xs visible-sm"></div>
+            <div class="hidden-xs hidden-sm col-md-5 col-lg-4">
+                <div class="award-container full-height">
+                    <img src="/themes/demo/assets/images/sme.png" alt="sme"/>
+                </div>
+                <div class="award-container">
+                    <img src="/themes/demo/assets/images/oba-winner.png" alt="oba" style="max-width: 80px"/>
+                </div>
+                <!-- <span class="pull-right" style="font-variant: small-caps; line-height: 52px;">shortlisted for</span> -->
+            </div>
+            <button type="button" id="mobile-menu-toggle" class="hidden-md hidden-lg">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
+                <span>MENU</span>
             </button>
-            <a class="navbar-brand" href="{{ 'home'|page }}">October Demo</a>
-        </div>
-        <div class="collapse navbar-collapse navbar-main-collapse">
-            <ul class="nav navbar-nav">
-                <li class="separator hidden-xs"></li>
-                <li class="{% if this.page.id == 'home' %}active{% endif %}"><a href="{{ 'home'|page }}">Basic concepts</a></li>
-                <li class="{% if this.page.id == 'ajax' %}active{% endif %}"><a href="{{ 'ajax'|page }}">AJAX framework</a></li>
-                <li class="{% if this.page.id == 'plugins' %}active{% endif %}"><a href="{{ 'plugins'|page }}">Plugin components</a></li>
-            </ul>
-        </div>
+        </span>
     </div>
-</nav>
+</section>
+<ul class="nav navbar-nav">
+    <li>Home</li>
+    <li class="v-divider"></li>
+    <li>Business Finance</li>
+    <li class="v-divider"></li>
+    <li>Bank Accounts</li>
+    <li class="v-divider"></li>
+    <li>foo</li>
+    <li class="v-divider"></li>
+    <li>bar</li>
+    <li class="v-divider"></li>
+    <li>foobar</li>
+</ul>
+<br>
+<hr>

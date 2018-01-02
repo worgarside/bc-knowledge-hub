@@ -55,10 +55,10 @@ return [
         'mysql' => [
             'driver'    => 'mysql',
             'host'      => 'localhost',
-            'port'      => '',
-            'database'  => 'database',
+            'port'      => '3306',
+            'database'  => 'knowledge_hub',
             'username'  => 'root',
-            'password'  => '',
+            'password'  => 'digi',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',

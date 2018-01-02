@@ -1,0 +1,63 @@
+body {
+    background-color: #F7F7F7;
+}
+
+#welcome-header {
+    margin-top: 40px;
+}
+
+.search-group {
+    width: 45%;
+    margin: 40px auto;
+}
+
+.top-container{
+    background-color: #009595;
+    color: #FFFFFF;
+    border-bottom: solid #4AC6C5;
+}
+
+p {
+    font-family: "Roboto", "sans-serif";
+    font-size: 12pt;
+}
+
+h3 {
+    margin-top: 40px;
+    font-family: "Roboto", "sans-serif";
+    font-size: 24pt;
+    font-weight: 900;
+}
+
+h4 {
+    font-family: "Roboto", "sans-serif";
+    font-size: 18pt;
+}
+
+.category-desc{
+    font-size: 11pt;
+}
+
+.category-icon {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px;
+}
+
+.center-80pc{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.categories {
+    margin-top: 50px;
+    color: #505050;
+}
+
+.category-btn {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid #505050;
+    font-weight: bold;
+}
