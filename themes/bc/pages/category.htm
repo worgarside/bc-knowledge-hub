@@ -2,11 +2,18 @@ title = "Category"
 url = "/knowledge-hub/category/:category"
 layout = "default"
 is_hidden = 0
+
+[blogCategories]
+slug = "{{ :slug }}"
+displayEmpty = 0
+categoryPage = "blog/category"
 ==
+<?php
 function onStart()
 {
 $this['category'] = $this->param('category');
 }
+?>
 ==
 <div class="center-80pc">
     <h3>{{ category }} Homepage</h3>
@@ -26,3 +33,6 @@ $this['category'] = $this->param('category');
         <li>4</li>
     </ul>
 </div>
+
+
+{% component 'blogCategories' %}

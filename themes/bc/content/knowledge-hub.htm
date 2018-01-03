@@ -1,8 +1,3 @@
-title = "Knowledge Hub"
-url = "/knowledge-hub"
-layout = "default"
-is_hidden = 0
-==
 <section id="sub-header">
     <div class="row top-container text-center">
         <h1 id="welcome-header">Welcome to the Business Hub</h1>
@@ -25,15 +20,32 @@ is_hidden = 0
 <section id="khub-categories">
     <div class="row text-center categories">
         <h3>Business categories</h3>
+
+
+        {% for (cat in category_list)  %}
+            <p>{{ cat }}</p>
+        {% endfor %}
+
+        <h1>{category_list[0]}</h1>
+
+
+
+
         <p>Select a category to view the most frequently asked questions for that section</p>
         <div class="row">
             <div class="center-80pc">
+
+
+
                 <div class="col-md-3 text-center">
                     <img class="category-icon" src="/themes/bc/assets/images/accounting_icon.png">
                     <h4>Accounting</h4>
                     <p class="category-desc">Need to know about accounting? Go to the FAQ page to find out more info.</p>
                     <a href="{{ 'accounting'|page }}" type="button" class="btn btn-default category-btn">Go to section</a>
                 </div>
+
+
+
                 <div class="col-md-3 text-center">
                     <img class="category-icon" src="/themes/bc/assets/images/growth_icon.png">
                     <h4>Business Growth</h4>

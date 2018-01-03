@@ -1,28 +1,3 @@
-title = "KHub Home"
-url = "/knowledge-hub"
-layout = "default"
-is_hidden = 0
-==
-<?php
-function onStart()
-{
-    $db_categories = Db::table('rainlab_blog_categories')->get();
-    $div_open = "<div>";
-    $div_close = "</div>";
-
-    $cat_count = 0;
-    $cat_list = array();
-
-    foreach ($db_categories as $category) {
-        $cat_count ++;
-        array_push($cat_list, $category);
-    }
-
-    $this['cat_count'] = $cat_count;
-    $this['categories'] = $cat_list;
-}
-?>
-==
 <section id="sub-header">
     <div class="row top-container text-center">
         <h1 id="welcome-header">Welcome to the Business Hub</h1>
@@ -42,23 +17,72 @@ function onStart()
         </section>
     </div>
 </section>
-
 <section id="khub-categories">
     <div class="row text-center categories">
         <h3>Business categories</h3>
+        <h1>{cat_count}</h1>
         <p>Select a category to view the most frequently asked questions for that section</p>
+
+
+
+
+
+
+
         <div class="row">
             <div class="center-80pc">
-
-            {% for category in categories %}
-                <!-- Dynamically creates category 'cards', auto-newlines after 4 cards because of bootstrap columns-->
                 <div class="col-md-3 text-center">
-                    <img class="category-icon {{ category.slug }}" src="/themes/bc/assets/images/accounting_icon.png">
-                    <h4>{{ category.name }}</h4>
-                    <p class="category-desc">{{ category.description }}</p>
-                    <a href="knowledge-hub/category/{{ category.slug }}" type="button" class="btn btn-default category-btn">Go to section</a>
+                    <img class="category-icon" src="/themes/bc/assets/images/accounting_icon.png">
+                    <h4>Accounting</h4>
+                    <p class="category-desc">Need to know about accounting? Go to the FAQ page to find out more info.</p>
+                    <a href="{{ 'accounting'|page }}" type="button" class="btn btn-default category-btn">Go to section</a>
                 </div>
-            {% endfor %}
+                <div class="col-md-3 text-center">
+                    <img class="category-icon" src="/themes/bc/assets/images/growth_icon.png">
+                    <h4>Business Growth</h4>
+                    <p class="category-desc">Want to learn how to expand? This section has the answers.</p>
+                    <a href="#" type="button" class="btn btn-default category-btn">Go to section</a>
+                </div>
+                <div class="col-md-3 text-center">
+                    <img class="category-icon" src="/themes/bc/assets/images/client_icon.png">
+                    <h4>Client & Customers</h4>
+                    <p class="category-desc">Feeling out of touch with clientele or customer base? You need this section.</p>
+                    <a href="#" type="button" class="btn btn-default category-btn">Go to section</a>
+                </div>
+                <div class="col-md-3 text-center">
+                    <img class="category-icon" src="/themes/bc/assets/images/legal_icon.png">
+                    <h4>Legal</h4>
+                    <p class="category-desc">Concerned about legal issues? This section is what you want</p>
+                    <a href="#" type="button" class="btn btn-default category-btn">Go to section</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="center-80pc">
+                <div class="col-md-3 text-center">
+                    <img class="category-icon" src="/themes/bc/assets/images/marketing_sales_icon.png">
+                    <h4>Marketing & Sales</h4>
+                    <p class="category-desc">Improving your marketing strategy? We have a great FAQ section for that</p>
+                    <a href="#" type="button" class="btn btn-default category-btn">Go to section</a>
+                </div>
+                <div class="col-md-3 text-center">
+                    <img class="category-icon" src="/themes/bc/assets/images/technology_icon.png">
+                    <h4>Technology</h4>
+                    <p class="category-desc">Not sure what technology your business needs? Find out more in this section</p>
+                    <a href="#" type="button" class="btn btn-default category-btn">Go to section</a>
+                </div>
+                <div class="col-md-3 text-center">
+                    <img class="category-icon" src="/themes/bc/assets/images/finance_icon.png">
+                    <h4>Finance & Funding</h4>
+                    <p class="category-desc">Looking for assistance with the finances? Click below to find the best</p>
+                    <a href="#" type="button" class="btn btn-default category-btn">Go to section</a>
+                </div>
+                <div class="col-md-3 text-center">
+                    <img class="category-icon" src="/themes/bc/assets/images/stakeholders_icon.png">
+                    <h4>Stakeholders</h4>
+                    <p class="category-desc">Stakeholder in a business? This section has the FAQ for you</p>
+                    <a href="#" type="button" class="btn btn-default category-btn">Go to section</a>
+                </div>
             </div>
         </div>
     </div>
