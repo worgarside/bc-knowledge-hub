@@ -3,25 +3,18 @@ url = "/knowledge-hub"
 layout = "default"
 is_hidden = 0
 ==
-<?php
 function onStart()
 {
     $db_categories = Db::table('rainlab_blog_categories')->get();
-    $div_open = "<div>";
-    $div_close = "</div>";
 
-    $cat_count = 0;
     $cat_list = array();
 
     foreach ($db_categories as $category) {
-        $cat_count ++;
         array_push($cat_list, $category);
     }
 
-    $this['cat_count'] = $cat_count;
     $this['categories'] = $cat_list;
 }
-?>
 ==
 <section id="sub-header">
     <div class="row top-container text-center">
@@ -71,37 +64,37 @@ function onStart()
 
         <div class="col-md-4">
             <h4 class="pink-text">Accounting</h4>
-            <ul class="recent-knowledge">
-                <li class="recent-topic pink-bullet">VAT: How does it affect my small business?</li>
-                <li class="recent-topic pink-bullet">What do I do if my business is failing?</li>
-                <li class="recent-topic pink-bullet">What's an Individual Voluntary Arrangement?</li>
-                <li class="recent-topic pink-bullet">Can you actually save money on Business Tax?</li>
-                <li class="recent-topic pink-bullet">Can High Street stores really win against online shopping?</li>
-                <li class="recent-topic pink-bullet">How to transfer your business assets</li>
+            <ul>
+                <li class="arrow-bullet pink-bullet">VAT: How does it affect my small business?</li>
+                <li class="arrow-bullet pink-bullet">What do I do if my business is failing?</li>
+                <li class="arrow-bullet pink-bullet">What's an Individual Voluntary Arrangement?</li>
+                <li class="arrow-bullet pink-bullet">Can you actually save money on Business Tax?</li>
+                <li class="arrow-bullet pink-bullet">Can High Street stores really win against online shopping?</li>
+                <li class="arrow-bullet pink-bullet">How to transfer your business assets</li>
             </ul>
         </div>
 
         <div class="col-md-4">
             <h4 class="green-text">Finance & Funding</h4>
-            <ul class="recent-knowledge">
-                <li class="recent-topic green-bullet">VAT: How does it affect my small business?</li>
-                <li class="recent-topic green-bullet">What do I do if my business is failing?</li>
-                <li class="recent-topic green-bullet">What's an Individual Voluntary Arrangement?</li>
-                <li class="recent-topic green-bullet">Can you actually save money on Business Tax?</li>
-                <li class="recent-topic green-bullet">Can High Street stores really win against online shopping?</li>
-                <li class="recent-topic green-bullet">How to transfer your business assets</li>
+            <ul>
+                <li class="arrow-bullet green-bullet">VAT: How does it affect my small business?</li>
+                <li class="arrow-bullet green-bullet">What do I do if my business is failing?</li>
+                <li class="arrow-bullet green-bullet">What's an Individual Voluntary Arrangement?</li>
+                <li class="arrow-bullet green-bullet">Can you actually save money on Business Tax?</li>
+                <li class="arrow-bullet green-bullet">Can High Street stores really win against online shopping?</li>
+                <li class="arrow-bullet green-bullet">How to transfer your business assets</li>
             </ul>
         </div>
 
         <div class="col-md-4">
             <h4 class="yellow-text">Legal</h4>
-            <ul class="recent-knowledge">
-                <li class="recent-topic yellow-bullet">VAT: How does it affect my small business?</li>
-                <li class="recent-topic yellow-bullet">What do I do if my business is failing?</li>
-                <li class="recent-topic yellow-bullet">What's an Individual Voluntary Arrangement?</li>
-                <li class="recent-topic yellow-bullet">Can you actually save money on Business Tax?</li>
-                <li class="recent-topic yellow-bullet">Can High Street stores really win against online shopping?</li>
-                <li class="recent-topic yellow-bullet">How to transfer your business assets</li>
+            <ul>
+                <li class="arrow-bullet yellow-bullet">VAT: How does it affect my small business?</li>
+                <li class="arrow-bullet yellow-bullet">What do I do if my business is failing?</li>
+                <li class="arrow-bullet yellow-bullet">What's an Individual Voluntary Arrangement?</li>
+                <li class="arrow-bullet yellow-bullet">Can you actually save money on Business Tax?</li>
+                <li class="arrow-bullet yellow-bullet">Can High Street stores really win against online shopping?</li>
+                <li class="arrow-bullet yellow-bullet">How to transfer your business assets</li>
             </ul>
         </div>
     </div>

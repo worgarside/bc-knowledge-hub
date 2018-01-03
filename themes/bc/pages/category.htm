@@ -3,36 +3,78 @@ url = "/knowledge-hub/category/:category"
 layout = "default"
 is_hidden = 0
 
-[blogCategories]
-slug = "{{ :slug }}"
-displayEmpty = 0
-categoryPage = "blog/category"
+[blogPosts]
+categoryFilter = "{{ :category }}"
+postsPerPage = 6
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = 404
+postPage = 404
 ==
-<?php
 function onStart()
 {
-$this['category'] = $this->param('category');
+    $current_category = DB::table('rainlab_blog_categories')->where('slug', $this->param('category'))->first();
+    $this['category'] = $current_category;
+
+
+
+    $master_table = DB::table('rainlab_blog_posts_categories')
+                        -> join('rainlab_blog_posts')
+                        -> join('backend_users')
+                        -> where(category_id, '=', $current_category->id);
+
+    var_dump($master_table);
+
+
 }
-?>
 ==
-<div class="center-80pc">
-    <h3>{{ category }} Homepage</h3>
-
-    <p>Recent <a href="{{ 'accounting-articles'|page }}">Articles</a>:</p>
-
-    {% component 'accountingPosts' %}
-
-    <br><br><br>
-
-    <p>FAQs</p>
-
-    <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-    </ul>
-</div>
 
 
-{% component 'blogCategories' %}
+
+
+
+{% if (category.name != NULL) %}
+
+    <section id="sub-header">
+        <div class="row top-container">
+            <div class="center-80pc">
+                <h1 id="category-header">{{ category.name }}</h1>
+            </div>
+        </div>
+    </section>
+
+    <section id="current-path" class="center-80pc">
+        <p class="current-path">
+            <a class="current-path path-ancestor" href="/">Home</a>
+            <span class="glyphicon glyphicon-chevron-right current-path"></span>
+            <a class="current-path" href="/knowledge-hub">The Business Hub</a>
+            <span class="glyphicon glyphicon-chevron-right current-path"></span>
+            {{ category.name }}
+        </p>
+    </section>
+
+    <section id="recent-articles" class="center-80pc">
+        <h2>Recent Articles:</h2>
+
+
+        {% for post in rel_posts %}
+            <h4>{{ post.title }}</h4>
+            <p class="category-desc">{{ post.excerpt }}</p>
+        {% endfor %}
+
+
+    </section>
+
+
+    <section id="faqs" class="center-80pc">
+        <h2>Popular FAQs:</h2>
+    </section>
+
+
+
+
+
+
+{% else %}
+    {% content "404.htm" %}
+{% endif %}
