@@ -1,0 +1,33 @@
+title = "accounting"
+url = "/knowledge-hub/accounting"
+layout = "default"
+is_hidden = 0
+
+[blogPosts accountingPosts]
+pageNumber = "{{ :page }}"
+categoryFilter = "accounting"
+postsPerPage = 5
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = 404
+postPage = 404
+==
+<div class="center-80pc">
+    <p>Accounting Homepage</p>
+
+    <p>Recent
+        <a href="{{ 'accounting-articles'|page }}">Articles</a>:</p>
+
+    {% component 'accountingPosts' %}
+
+    <br><br><br>
+
+    <p>FAQs</p>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
