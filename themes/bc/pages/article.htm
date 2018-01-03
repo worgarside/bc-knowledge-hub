@@ -1,0 +1,32 @@
+title = "Article"
+url = "/knowledge-hub/category/:category*/:slug"
+layout = "default"
+is_hidden = 0
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "{{ /knowledge-hub/category/:category }}"
+==
+function onStart()
+{
+$this['category'] = $this->param('category');
+$this['slug'] = $this->param('slug');
+}
+==
+<section id="sub-header">
+    <div class="row top-container">
+        <div class="center-80pc">
+            <h1 id="category-title">{{ category }}</h1>
+        </div>
+    </div>
+</section>
+
+<div class="center-80pc">
+
+    <h1 id="article-title">{{ slug }}</h1>
+
+    {% component 'blogPost' %}
+
+    <br><br><br>
+
+</div>
