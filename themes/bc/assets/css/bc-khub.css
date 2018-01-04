@@ -388,8 +388,6 @@ body.safari #live-search .input label {
 }
 
 
-
-
 a.current-path {
     color: #9c9c9c;
 }
@@ -405,11 +403,17 @@ span.current-path {
 
 .article-title {
     color: #4ac6c5;
+    text-decoration:none;
+}
+
+.article-title:hover {
+    color: #3f8b8a;
+    text-decoration:none;
 }
 
 .article-excerpt {
     font-style: italic;
-    color: #9A9A9A;
+    color: #707070;
 }
 
 .no-margin-top {

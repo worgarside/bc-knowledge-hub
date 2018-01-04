@@ -47,7 +47,6 @@ function onStart()
     }
 
     $this['articles'] = $articles;
-    # dd($master_table);
 }
 ==
 
@@ -82,22 +81,19 @@ function onStart()
 
                 {% for article in articles %}
                     <div class="row">
-                        <h2 class="article-title">{{ article.title }}</h2>
+                        <h2 ><a class="article-title" href="/knowledge-hub/category/accounting/{{ article.slug }}">{{ article.title }}</a></h2>
                     </div>
                     <div class="row">
                         <div class="col-md-4 no-gutter-left">
                             <p>Author: <strong>{{ article.first_name }} {{ article.last_name }}</strong></p>
                         </div>
                         <div class="col-md-4">
-                            <p>Reading Time: <strong>forever</strong></p>
+                            {% set reading_time =  (article.content_html|length // 250) + 1 %}
+                            <p>Reading Time: <strong>{{ reading_time }} minutes</strong></p>
                         </div>
                     </div>
                     <div class="row">
-                        {% if article.excerpt is empty %}
-                            <p>NO EXCERPT</p>
-                        {% else %}
                             <p class="article-excerpt">{{ article.excerpt }}</p>
-                        {% endif %}
                     </div>
                     <hr>
                 {% endfor %}
