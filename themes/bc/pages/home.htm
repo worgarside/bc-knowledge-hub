@@ -32,29 +32,12 @@ function onStart()
         <h1 id="welcome-header">Welcome to the Business Hub</h1>
         <p>Thanks for visiting our business hub - find out information about business here.</p>
 
-        {#<section id="live-search" class="dark align-center clearfix">#}
-            {#<div class="container col-full">#}
-                {#<div id="search-wrap">#}
-                    {#<form role="search" method="get" id="searchform" class="clearfix" action="https://www.businesscomparison.com/knowledge-hub/" autocomplete="off">#}
-                        {#<div class="input">#}
-                            {#<input type="text" name="s" id="s" placeholder="Have a question? Ask or enter a search term."/>#}
-                            {#<input type="submit" id="searchsubmit" value="<span class=' glyphicon glyphicon-search'></span>" />#}
-                        {#</div>#}
-                    {#</form>#}
-                {#</div>#}
-            {#</div>#}
-        {#</section>#}
-
-
-
         <div style="color: black">
             {% component 'searchInput' %}
         </div>
 
     </div>
 </section>
-
-
 
 <section id="khub-categories">
     <div class="row text-center categories">
@@ -66,7 +49,7 @@ function onStart()
             {% for category in categories %}
                 <!-- Dynamically creates category 'cards', auto-newlines after 4 cards because of bootstrap columns-->
                 <div class="col-md-3 text-center">
-                    <img class="category-icon {{ category.slug }}" src="#">
+                    <img class="category-icon {{ category.slug }}" src="/themes/bc/assets/images/accounting_icon.png">
                     <h4>{{ category.name }}</h4>
                     <p class="category-desc">{{ category.description }}</p>
                     <a href="knowledge-hub/category/{{ category.slug }}" type="button" class="btn btn-default category-btn">Go to section</a>
@@ -119,3 +102,6 @@ function onStart()
         </div>
     </div>
 </section>
+<script type="text/javascript">
+    $('div.ss-search-form__input').find('input').attr('placeholder', 'Have a question? Ask or enter a search term');
+</script>
