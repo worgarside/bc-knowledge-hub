@@ -401,7 +401,7 @@ span.current-path {
      margin: 15px 2px;
  }
 
-.article-title {
+.article-title, h2.article-title:hover {
     color: #4ac6c5;
     text-decoration:none;
 }
@@ -418,4 +418,9 @@ span.current-path {
 
 .no-margin-top {
     margin-top: 0;
+}
+
+.related-article {
+    background-color: #F5F5F5;
+    padding: 10px 20px;
 }

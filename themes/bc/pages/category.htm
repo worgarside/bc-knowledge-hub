@@ -81,7 +81,7 @@ function onStart()
 
                 {% for article in articles %}
                     <div class="row">
-                        <h2 ><a class="article-title" href="/knowledge-hub/category/accounting/{{ article.slug }}">{{ article.title }}</a></h2>
+                        <h2 ><a class="article-title" href="/knowledge-hub/category/{{ category.slug }}/{{ article.slug }}">{{ article.title }}</a></h2>
                     </div>
                     <div class="row">
                         <div class="col-md-4 no-gutter-left">
