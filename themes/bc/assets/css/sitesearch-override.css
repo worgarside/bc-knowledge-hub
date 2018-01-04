@@ -1,0 +1,174 @@
+body.oc-loading,
+body.oc-loading * {
+    cursor: default;
+}
+
+.stripe-loading-indicator {
+    display: none;
+}
+
+.stripe-loading-indicator .stripe,
+.stripe-loading-indicator .stripe-loaded {
+    display: none;
+}
+
+.stripe-loading-indicator .stripe {
+    display: none;
+}
+
+.stripe-loading-indicator .stripe-loaded {
+    display: none;
+}
+
+.stripe-loading-indicator.loaded {
+    display: none;
+}
+
+.stripe-loading-indicator.loaded .stripe-loaded {
+    display: none;
+}
+
+.stripe-loading-indicator.hide {
+    display: none;
+}
+
+body > p.flash-message {
+    display: none;
+}
+
+body > p.flash-message.fade {
+    display: none;
+}
+
+body > p.flash-message.fade.in {
+    display: none;
+}
+
+body > p.flash-message.success {
+    display: none;
+}
+
+body > p.flash-message.error {
+    display: none;
+}
+
+body > p.flash-message.warning {
+    display: none;
+}
+
+body > p.flash-message.info {
+    display: none;
+}
+body > p.flash-message button.close {
+    display: none;
+}
+
+body > p.flash-message button.close:hover,
+body > p.flash-message button.close:focus {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    body > p.flash-message {
+        display: none;
+    }
+}
+
+[data-request][data-request-validate] [data-validate-for]:not(.visible),
+[data-request][data-request-validate] [data-validate-error]:not(.visible) {
+    display: none;
+}
+
+a.oc-loading:after,
+button.oc-loading:after,
+span.oc-loading:after {
+    display: none;
+}
+
+@-moz-keyframes oc-rotate-loader {
+    0% {
+        display: none;
+    }
+    100% {
+        display: none;
+    }
+}
+
+@-webkit-keyframes oc-rotate-loader {
+    0% {
+        display: none;
+    }
+    100% {
+        display: none;
+    }
+}
+
+@-o-keyframes oc-rotate-loader {
+    0% {
+        display: none;
+    }
+    100% {
+        display: none;
+    }
+}
+
+@-ms-keyframes oc-rotate-loader {
+    0% {
+        display: none;
+    }
+    100% {
+        display: none;
+    }
+}
+@keyframes oc-rotate-loader {
+    0% {
+        display: none;
+    }
+    100% {
+        display: none;
+    }
+}
+
+@-moz-keyframes oc-infinite-loader {
+    0% {
+        display: none;
+    }
+    100% {
+        display: none;
+    }
+}
+
+@-webkit-keyframes oc-infinite-loader {
+    0% {
+        display: none;
+    }
+    100% {
+        display: none;
+    }
+}
+
+@-o-keyframes oc-infinite-loader {
+    0% {
+        display: none;
+    }
+    100% {
+        display: none;
+    }
+}
+@-ms-keyframes oc-infinite-loader {
+    0% {
+        display: none;
+    }
+    100% {
+        display: none;
+    }
+}
+
+@keyframes oc-infinite-loader {
+    0% {
+        display: none;
+    }
+    100% {
+        display: none;
+    }
+}

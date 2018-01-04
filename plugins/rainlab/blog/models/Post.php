@@ -15,10 +15,12 @@ use Backend\Models\User;
 use Carbon\Carbon;
 use Cms\Classes\Page as CmsPage;
 use Cms\Classes\Theme;
+//use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
     use \October\Rain\Database\Traits\Validation;
+//    use searchable
 
     public $table = 'rainlab_blog_posts';
     public $implement = ['@RainLab.Translate.Behaviors.TranslatableModel'];

@@ -1,0 +1,12 @@
+title = "blogPost"
+url = "/knowledge-hub/category/blogpost/:slug"
+layout = "default"
+is_hidden = 1
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = 404
+
+[siteSearchInclude]
+==
+{% component 'blogPost' %}
