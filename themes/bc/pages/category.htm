@@ -13,58 +13,113 @@ postPage = 404
 ==
 function onStart()
 {
-    $current_category = DB::table('rainlab_blog_categories')->where('slug', $this->param('category'))->first();
+
+    $db_categories = Db::table('rainlab_blog_categories')->get();
+
+    $cat_list = array();
+
+    foreach ($db_categories as $category) {
+        array_push($cat_list, $category);
+    }
+
+    $this['category_count'] = sizeof($cat_list);
+    $this['categories'] = $cat_list;
+
+    $current_category = $db_categories
+                    -> where('slug', $this -> param('category'))
+                    -> first();
+
     $this['category'] = $current_category;
 
-
-
     $master_table = DB::table('rainlab_blog_posts_categories')
-                        -> join('rainlab_blog_posts')
-                        -> join('backend_users')
-                        -> where(category_id, '=', $current_category->id);
+                    -> join('rainlab_blog_posts', 'rainlab_blog_posts_categories.post_id', '=', 'rainlab_blog_posts.id')
+                    -> join('backend_users', 'rainlab_blog_posts.user_id', '=', 'backend_users.id')
+                    -> where('rainlab_blog_posts_categories.category_id', '=', $current_category->id)
+                    -> where('rainlab_blog_posts.published', '=', 1)
+                    -> select('title', 'slug', 'content_html', 'excerpt', 'first_name', 'last_name', 'published_at')
+                    -> orderBy('published_at', 'desc')
+                    -> take(5)
+                    -> get();
 
-    var_dump($master_table);
+    $articles = array();
+    foreach ($master_table as $post) {
+        array_push($articles, $post);
+    }
 
-
+    $this['articles'] = $articles;
+    # dd($master_table);
 }
 ==
-
-
-
-
 
 {% if (category.name != NULL) %}
 
     <section id="sub-header">
-        <div class="row top-container">
+        <div class="row top-container col-md-12">
             <div class="center-80pc">
                 <h1 id="category-header">{{ category.name }}</h1>
             </div>
         </div>
     </section>
 
-    <section id="current-path" class="center-80pc">
-        <p class="current-path">
-            <a class="current-path path-ancestor" href="/">Home</a>
-            <span class="glyphicon glyphicon-chevron-right current-path"></span>
-            <a class="current-path" href="/knowledge-hub">The Business Hub</a>
-            <span class="glyphicon glyphicon-chevron-right current-path"></span>
-            {{ category.name }}
-        </p>
-    </section>
+    <div class="row center-80pc">
+        <section id="current-path">
+            <div class="row col-md-12">
+                <p class="current-path">
+                    <a class="current-path" href="/">Home</a>
+                    <span class="glyphicon glyphicon-chevron-right current-path"></span>
+                    <a class="current-path" href="/knowledge-hub">The Business Hub</a>
+                    <span class="glyphicon glyphicon-chevron-right current-path"></span>
+                    {{ category.name }}
+                </p>
+            </div>
+        </section>
+        <div class="col-md-8">
+            <section id="recent-articles">
+                <div class="row">
+                    <h3 class="no-margin-top">Articles</h3>
+                    <p>Welcome to {{ category.name }} - here you'll find the latest articles and questions relating to {{ category.name|lower }}</p>
+                </div>
 
-    <section id="recent-articles" class="center-80pc">
-        <h2>Recent Articles:</h2>
-
-
-        {% for post in rel_posts %}
-            <h4>{{ post.title }}</h4>
-            <p class="category-desc">{{ post.excerpt }}</p>
-        {% endfor %}
-
-
-    </section>
-
+                {% for article in articles %}
+                    <div class="row">
+                        <h2 class="article-title">{{ article.title }}</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 no-gutter-left">
+                            <p>Author: <strong>{{ article.first_name }} {{ article.last_name }}</strong></p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>Reading Time: <strong>forever</strong></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% if article.excerpt is empty %}
+                            <p>NO EXCERPT</p>
+                        {% else %}
+                            <p class="article-excerpt">{{ article.excerpt }}</p>
+                        {% endif %}
+                    </div>
+                    <hr>
+                {% endfor %}
+            </section>
+        </div>
+        <div class="col-md-offset-1 col-md-3">
+            <section id="category-sidebar">
+                <h3 class="no-margin-top">Categories</h3>
+                <br>
+                <ul class="list-unstyled">
+                    {% set sidebar_count = 0 %}
+                    {% for category in categories %}
+                        {% set sidebar_count = sidebar_count + 1 %}
+                        <li><p style="font-size: 14pt"><a href="/knowledge-hub/category/{{ category.slug }}">{{ category.name }}</a></p></li>
+                        {% if (sidebar_count < category_count) %}
+                            <li><hr style="margin: 15px 0"></li>
+                        {%  endif %}
+                    {% endfor %}
+                </ul>
+            </section>
+        </div>
+    </div>
 
     <section id="faqs" class="center-80pc">
         <h2>Popular FAQs:</h2>

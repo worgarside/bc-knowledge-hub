@@ -46,7 +46,7 @@ function onStart()
             {% for category in categories %}
                 <!-- Dynamically creates category 'cards', auto-newlines after 4 cards because of bootstrap columns-->
                 <div class="col-md-3 text-center">
-                    <img class="category-icon {{ category.slug }}" src="/themes/bc/assets/images/accounting_icon.png">
+                    <img class="category-icon {{ category.slug }}">
                     <h4>{{ category.name }}</h4>
                     <p class="category-desc">{{ category.description }}</p>
                     <a href="knowledge-hub/category/{{ category.slug }}" type="button" class="btn btn-default category-btn">Go to section</a>

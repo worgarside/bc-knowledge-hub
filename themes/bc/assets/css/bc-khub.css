@@ -11,9 +11,7 @@ body {
     margin: 30px 0;
 }
 
-#article-title {
-    color: #4AC6C5;
-}
+
 
 .top-container{
     margin-top: 0;
@@ -400,21 +398,20 @@ span.current-path {
     color: #4ac6c5;
 }
 
-
 .current-path {
      font-size: 10pt;
      margin: 15px 2px;
  }
 
-
-.post-list {
-    color: red;
+.article-title {
+    color: #4ac6c5;
 }
 
-.info {
-    color: blue;
+.article-excerpt {
+    font-style: italic;
+    color: #9A9A9A;
 }
 
-.excerpt {
-    color: green;
+.no-margin-top {
+    margin-top: 0;
 }
