@@ -9,7 +9,6 @@ autoCompleteResultCount = 5
 showProviderBadge = 1
 searchPage = "search-results.htm"
 ==
-<?php
 function onStart()
 {
     $db_categories = Db::table('rainlab_blog_categories')->get();
@@ -22,7 +21,6 @@ function onStart()
 
     $this['categories'] = $cat_list;
 }
-?>
 ==
 
 <link rel="stylesheet" href="/themes/bc/assets/css/sitesearch-override.css"/>
