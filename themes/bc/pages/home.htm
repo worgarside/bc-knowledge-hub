@@ -43,7 +43,7 @@ function onStart()
                     <img class="category-icon {{ category.slug }}" src="/themes/bc/assets/images/{{ category.slug }}.png">
                     <h4>{{ category.name }}</h4>
                     <p class="category-desc">{{ category.description }}</p>
-                    <a href="knowledge-hub/category/{{ category.slug }}" type="button" class="btn btn-default category-btn">Go to section</a>
+                    <a href="knowledge-hub/{{ category.slug }}" type="button" class="btn btn-default category-btn">Go to section</a>
                 </div>
             {% endfor %}
             </div>

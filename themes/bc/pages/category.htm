@@ -1,9 +1,10 @@
 title = "Category"
-url = "/knowledge-hub/category/:category"
+url = "/knowledge-hub/:category"
 layout = "default"
 is_hidden = 0
 
 [blogPosts]
+pageNumber = "{{ :page }}"
 categoryFilter = "{{ :category }}"
 postsPerPage = 6
 noPostsMessage = "No posts found"
@@ -14,7 +15,8 @@ postPage = 404
 function onStart()
 {
 
-    $db_categories = Db::table('rainlab_blog_categories')->get();
+
+    $db_categories = DB::table('rainlab_blog_categories')->get();
 
     $cat_list = array();
 
@@ -56,11 +58,10 @@ function onStart()
     }
 }
 ==
-
 {% if (valid_category) %}
 
     <section id="sub-header">
-        <div class="row top-container col-md-12">
+        <div class="top-container col-md-12">
             <div class="center-80pc">
                 <h1 id="category-header">{{ category.name }}</h1>
             </div>
@@ -88,7 +89,7 @@ function onStart()
 
                 {% for article in articles %}
                     <div class="row">
-                        <h2 ><a class="article-title" href="/knowledge-hub/category/{{ category.slug }}/{{ article.slug }}">{{ article.title }}</a></h2>
+                        <h2 ><a class="article-title" href="/knowledge-hub/{{ category.slug }}/{{ article.slug }}">{{ article.title }}</a></h2>
                     </div>
                     <div class="row">
                         <div class="col-md-4 no-gutter-left">

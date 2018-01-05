@@ -1,5 +1,5 @@
 title = "search results"
-url = "/search-results"
+url = "/knowledge-hub/search-results"
 layout = "default"
 is_hidden = 0
 
@@ -7,6 +7,29 @@ is_hidden = 0
 resultsPerPage = 10
 showProviderBadge = 1
 noResultsMessage = "Your search returned no results."
-visitPageMessage = "Visit page"
+visitPageMessage = "View Article"
 ==
-{% component 'searchResults' %}
+<section id="sub-header">
+    <div class="top-container col-md-12" style="margin-top: -20px;"> <!-- Weird margin for search results, not sure why :/ -->
+        <div class="center-80pc">
+            <h1 id="category-header">Search Results</h1>
+        </div>
+    </div>
+</section>
+
+<div class="center-80pc">
+
+    <section id="current-path-list">
+        <div class="row col-md-12">
+            <p class="current-path">
+                <a class="current-path" href="/">Home</a>
+                <span class="glyphicon glyphicon-chevron-right current-path"></span>
+                <a class="current-path" href="/knowledge-hub">The Business Hub</a>
+                <span class="glyphicon glyphicon-chevron-right current-path"></span>
+                Search Results
+            </p>
+        </div>
+    </section>
+
+    {% component 'searchResults' %}
+</div>

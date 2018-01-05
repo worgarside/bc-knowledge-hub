@@ -1,12 +1,15 @@
 title = "Article"
-url = "/knowledge-hub/category/:category*/:slug"
+url = "/knowledge-hub/:category*/:slug"
 layout = "default"
 is_hidden = 0
 
 [blogPost]
 slug = "{{ :slug }}"
 categoryPage = "{{ /knowledge-hub/category/:category }}"
+
+[siteSearchInclude]
 ==
+<?php
 function onStart()
 {
 
@@ -65,8 +68,8 @@ function onStart()
         ############################
     }
 }
+?>
 ==
-
 {% if (article.title != NULL) %}
 
     <section id="sub-header">
