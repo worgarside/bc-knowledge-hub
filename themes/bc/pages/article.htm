@@ -123,7 +123,7 @@ function onStart()
                     {% set sidebar_count = 0 %}
                     {% for category in categories %}
                         {% set sidebar_count = sidebar_count + 1 %}
-                        <li><p style="font-size: 14pt"><a href="/knowledge-hub/category/{{ category.slug }}">{{ category.name }}</a></p></li>
+                        <li><p style="font-size: 14pt"><a href="/knowledge-hub/{{ category.slug }}">{{ category.name }}</a></p></li>
                         {% if (sidebar_count < category_count) %}
                             <li><hr style="margin: 15px 0"></li>
                         {% else %}
