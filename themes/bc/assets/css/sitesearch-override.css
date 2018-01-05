@@ -175,8 +175,7 @@ span.oc-loading:after {
 
 
 div.ss-search-form {
-    max-width: 550px;
-    width: 500px;
+    width: 600px;
     margin: 0 auto;
     color: #525252;
 }
@@ -193,7 +192,7 @@ div.ss-search-form__input input {
     font-size: 14px;
     width: 100%;
     padding: 20px 15px;
-    margin: 35px 0;
+    margin: 50px 0 70px 0;
     border: none;
     border-radius: 5px;
     background-color: #f0f0f0;
@@ -208,8 +207,8 @@ div.ss-search-form__input button {
     position: absolute;
     background-color: #F0F0F0;
     z-index: 100;
-    width: 500px;
-    margin: -40px auto 0 auto;
+    width: 600px;
+    margin: -75px auto 0 auto;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     padding-top: 5px;

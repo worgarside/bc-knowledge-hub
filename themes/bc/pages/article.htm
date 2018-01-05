@@ -9,7 +9,6 @@ categoryPage = "{{ /knowledge-hub/category/:category }}"
 
 [siteSearchInclude]
 ==
-<?php
 function onStart()
 {
 
@@ -54,7 +53,7 @@ function onStart()
                             -> where('rainlab_blog_posts.published', '=', 1)
                             -> select('title', 'slug', 'content_html', 'excerpt', 'first_name', 'last_name', 'published_at')
                             -> orderBy('published_at', 'desc')
-                            -> take(3)
+                            -> take(2)
                             -> get();
 
         $related_array = array();
@@ -68,7 +67,6 @@ function onStart()
         ############################
     }
 }
-?>
 ==
 {% if (article.title != NULL) %}
 
@@ -142,7 +140,7 @@ function onStart()
                 <div class="col-md-4">
                     <div class="related-article">
                         <h2 class="no-margin-top"><a class="article-title" style="font-size: 18pt"
-                            href="/knowledge-hub/category/{{ category.slug }}/{{ rel_article.slug }}">
+                            href="/knowledge-hub/{{ category.slug }}/{{ rel_article.slug }}">
                             {{ rel_article.title }}</a></h2>
                         <p>Author: <strong>{{ rel_article.first_name }} {{ rel_article.last_name }}</strong></p>
                     </div>
@@ -150,9 +148,6 @@ function onStart()
             {% endfor %}
         </div>
     </section>
-
-
-
 
 {% else %}
     {% content "404.htm" %}

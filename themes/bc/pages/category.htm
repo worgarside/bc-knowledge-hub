@@ -12,9 +12,7 @@ sortOrder = "published_at desc"
 categoryPage = 404
 postPage = 404
 ==
-function onStart()
-{
-
+function onStart() {
 
     $db_categories = DB::table('rainlab_blog_categories')->get();
 
@@ -92,6 +90,9 @@ function onStart()
                         <h2 ><a class="article-title" href="/knowledge-hub/{{ category.slug }}/{{ article.slug }}">{{ article.title }}</a></h2>
                     </div>
                     <div class="row">
+                        <p class="article-excerpt">{{ article.excerpt }}</p>
+                    </div>
+                    <div class="row">
                         <div class="col-md-4 no-gutter-left">
                             <p>Author: <strong>{{ article.first_name }} {{ article.last_name }}</strong></p>
                         </div>
@@ -99,9 +100,6 @@ function onStart()
                             {% set reading_time =  (article.content_html|length // 250) + 1 %}
                             <p>Reading Time: <strong>{{ reading_time }} minutes</strong></p>
                         </div>
-                    </div>
-                    <div class="row">
-                            <p class="article-excerpt">{{ article.excerpt }}</p>
                     </div>
                     <hr>
                 {% endfor %}

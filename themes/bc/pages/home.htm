@@ -9,9 +9,7 @@ autoCompleteResultCount = 5
 showProviderBadge = 0
 searchPage = "search-results.htm"
 ==
-<?php
-function onStart()
-{
+function onStart() {
     $db_categories = Db::table('rainlab_blog_categories')->get();
 
     $cat_list = array();
@@ -20,34 +18,31 @@ function onStart()
     }
     $this['categories'] = $cat_list;
 }
-?>
 ==
 <section id="sub-header">
-    <div class="row top-container text-center">
-        <h1 id="welcome-header">Welcome to the Business Hub</h1>
+    <div class="top-container text-center homepage">
+        <h1 id="welcome-header" class="homepage">Welcome to the Business Hub</h1>
         <p>Thanks for visiting our business hub - find out information about business here.</p>
-
-            {% component 'searchInput' %}
-
+        {% component 'searchInput' %}
     </div>
 </section>
 
 <section id="khub-categories">
-    <div class="row text-center categories">
+    <div class="text-center categories">
         <h3>Business categories</h3>
         <p>Select a category to view the most frequently asked questions for that section</p>
         <div class="row">
             <div class="center-80pc">
 
-            {% for category in categories %}
-                <!-- Dynamically creates category 'cards', auto-newlines after 4 cards because of bootstrap columns-->
-                <div class="col-md-3 text-center">
-                    <img class="category-icon {{ category.slug }}" src="/themes/bc/assets/images/{{ category.slug }}.png">
-                    <h4>{{ category.name }}</h4>
-                    <p class="category-desc">{{ category.description }}</p>
-                    <a href="knowledge-hub/{{ category.slug }}" type="button" class="btn btn-default category-btn">Go to section</a>
-                </div>
-            {% endfor %}
+                {% for category in categories %}
+                    <!-- Dynamically creates category 'cards', auto-newlines after 4 cards because of bootstrap columns-->
+                    <div class="col-md-3 text-center">
+                        <div class="circle {{ category.slug }}-circle"></div>
+                        <h4>{{ category.name }}</h4>
+                        <p class="category-desc">{{ category.description }}</p>
+                        <a href="knowledge-hub/{{ category.slug }}" type="button" class="btn btn-default category-btn">Go to section</a>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -97,7 +92,4 @@ function onStart()
 </section>
 <script type="text/javascript">
     $('div.ss-search-form__input').find('input').attr('placeholder', 'Have a question? Ask or enter a search term');
-
-    // $('#autocomplete-results.ss-search-form__results > p').css('color', 'blue');
-
 </script>
