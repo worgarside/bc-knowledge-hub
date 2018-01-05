@@ -178,6 +178,7 @@ div.ss-search-form {
     max-width: 550px;
     width: 500px;
     margin: 0 auto;
+    color: #525252;
 }
 
 div.ss-search-form__input input::placeholder {
@@ -190,30 +191,36 @@ div.ss-search-form__input input {
     color: #525252;
     font-family: Roboto, sans-serif;
     font-size: 14px;
+    width: 100%;
+    padding: 20px 15px;
+    margin: 35px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f0f0;
 }
 
-
-
-
-p.ss-show-all-results{
+div.ss-search-form__input button {
     display: none;
 }
 
 .ss-search-form__results.ss-search-form__results--visible {
     position: absolute;
-    background-color: #F5F5F5;
+    background-color: #F0F0F0;
     z-index: 100;
     width: 500px;
-    margin: 0 auto;
+    margin: -40px auto 0 auto;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding-top: 5px;
 }
 
-h4.ss-autocomplete-result__title a, div.ss-search-form__results.ss-search-form__results--visible p{
+h4.ss-autocomplete-result__title a, div.ss-search-form__results.ss-search-form__results--visible p, .ss-show-all-results a{
     display: block;
-    padding: 20px 0 20px 30px;
+    padding: 18px 0 18px 30px;
     margin: 0;
     text-align: left;
     font-size: 12pt;
-    font-weight: lighter;
+    font-weight: 300;
 }
 
 h4.ss-autocomplete-result__title a:before{
@@ -226,19 +233,16 @@ h4.ss-autocomplete-result__title a:before{
     color: #f44165;
 }
 
-h4.ss-autocomplete-result__title a:hover{
+h4.ss-autocomplete-result__title a:hover, .ss-show-all-results a:hover {
     background-color: #DBDBDB;
     text-decoration: none;
 }
 
-div.ss-autocomplete-result {
-    height: 57px;
-}
-
-div.ss-autocomplete-result hr {
+div.ss-autocomplete-result hr, div.ss-autocomplete-result__content h4.ss-autocomplete-result__title {
     margin: 0;
 }
 
-div.ss-autocomplete-result__content h4.ss-autocomplete-result__title {
-    margin: 0;
+div.ss-search-form__results.ss-search-form__results--visible p.ss-show-all-results {
+    padding: 0;
+    font-style: italic;
 }

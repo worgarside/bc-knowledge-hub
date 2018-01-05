@@ -32,7 +32,7 @@ function onStart()
         <h1 id="welcome-header">Welcome to the Business Hub</h1>
         <p>Thanks for visiting our business hub - find out information about business here.</p>
 
-        <div style="color: black">
+        <div>
             {% component 'searchInput' %}
         </div>
 
@@ -104,4 +104,7 @@ function onStart()
 </section>
 <script type="text/javascript">
     $('div.ss-search-form__input').find('input').attr('placeholder', 'Have a question? Ask or enter a search term');
+
+    // $('#autocomplete-results.ss-search-form__results > p').css('color', 'blue');
+
 </script>
