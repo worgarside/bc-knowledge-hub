@@ -6,12 +6,12 @@
 {# You can access it using result.model       #}
 
 
-{#<h2><a class="article-title" href="{{ result.url }}">{{ result.title | raw }}</a></h2>#}
+<h2><a class="article-title" href="{{ result.url }}" >{{ result.title | raw }}</a></h2>
 <p>{{ result.meta.category }}</p>
-{#<p class="ss-result__text">#}
-    {#{{ result.excerpt | raw }}#}
-{#</p>#}
+<p class="ss-result__text">
+    {{ result.excerpt | raw }}
+</p>
 
-{#<p class="ss-result__url">#}
-    {#<a href="{{ result.url | app }}" class="ss-result__link">{{ __SELF__.visitPageMessage }} &rarr;</a>#}
-{#</p>#}
+<p class="ss-result__url">
+    <a href="{{ result.url }}" class="ss-result__link">{{ __SELF__.visitPageMessage }} &rarr;</a>
+</p>

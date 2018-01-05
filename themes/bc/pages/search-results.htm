@@ -18,7 +18,6 @@ visitPageMessage = "View Article"
 </section>
 
 <div class="center-80pc">
-
     <section id="current-path-list">
         <div class="row col-md-12">
             <p class="current-path">
@@ -26,10 +25,9 @@ visitPageMessage = "View Article"
                 <span class="glyphicon glyphicon-chevron-right current-path"></span>
                 <a class="current-path" href="/knowledge-hub">The Business Hub</a>
                 <span class="glyphicon glyphicon-chevron-right current-path"></span>
-                Search Results
+                <i>"{{ searchResults.query }}"</i>
             </p>
         </div>
     </section>
-
     {% component 'searchResults' %}
 </div>
