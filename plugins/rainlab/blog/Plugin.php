@@ -7,6 +7,7 @@ use System\Classes\PluginBase;
 use RainLab\Blog\Classes\TagProcessor;
 use RainLab\Blog\Models\Category;
 use Event;
+use CustomBlogSearchProvider;
 
 class Plugin extends PluginBase
 {
@@ -156,6 +157,10 @@ class Plugin extends PluginBase
             elseif ($type == 'blog-post' || $type == 'all-blog-posts') {
                 return Post::resolveMenuItem($item, $url, $theme);
             }
+        });
+
+        Event::listen('offline.sitesearch.extend', function () {
+            return new CustomBlogSearchProvider();
         });
     }
 }

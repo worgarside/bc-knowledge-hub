@@ -44,29 +44,6 @@ class RainlabBlogResultsProvider extends ResultsProvider
             return $this;
         }
 
-        foreach ($this->posts() as $post) {
-            // Make this result more relevant, if the query is found in the title
-            $relevance = mb_stripos($post->title, $this->query) === false ? 1 : 2;
-
-            $result        = new Result($this->query, $relevance);
-            $result->title = $post->title;
-            $result->text  = $post->summary;
-            $result->meta  = $post->created_at;
-            $result->model = $post;
-
-            // Maintain compatibility with old setting
-            if (Settings::get('rainlab_blog_page') !== null) {
-                $result->url = $post->setUrl(Settings::get('rainlab_blog_page', ''), $this->controller);
-            } else {
-                $result->url = $this->getUrl($post);
-            }
-
-            $result->thumb = $this->getThumb($post->featured_images);
-
-            $this->addResult($result);
-        }
-
-        return $this;
     }
 
     /**
