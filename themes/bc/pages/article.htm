@@ -88,9 +88,9 @@ function onStart()
                     <span class="glyphicon glyphicon-chevron-right current-path"></span>
                     <a class="current-path" href="/knowledge-hub">The Business Hub</a>
                     <span class="glyphicon glyphicon-chevron-right current-path"></span>
-                    <a class="current-path" href="/knowledge-hub/category/{{ category.slug }}">{{ category.name }}</a>
+                    <a class="current-path" href="/knowledge-hub/{{ category.slug }}">{{ category.name }}</a>
                     <span class="glyphicon glyphicon-chevron-right current-path"></span>
-                    <a class="current-path" href="/knowledge-hub/category/{{ category.slug }}">Articles</a>
+                    <a class="current-path" href="/knowledge-hub/{{ category.slug }}">Articles</a>
                     <span class="glyphicon glyphicon-chevron-right current-path"></span>
                     {% if (article.title|length > 20) %}
                         {% set sliced_title = article.title|slice(0, 20) ~ '...' %}
