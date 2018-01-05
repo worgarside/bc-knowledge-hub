@@ -48,38 +48,6 @@ h4 {
     margin: 30px auto 20px auto;
 }
 
-img.accounting {
-    content:url("/themes/bc/assets/images/accounting_icon.png");
-}
-
-img.business-growth {
-    content:url("/themes/bc/assets/images/growth_icon.png");
-}
-
-img.client-customers {
-    content:url("/themes/bc/assets/images/client_icon.png");
-}
-
-img.legal {
-    content:url("/themes/bc/assets/images/legal_icon.png");
-}
-
-img.marketing-sales {
-    content:url("/themes/bc/assets/images/marketing_sales_icon.png");
-}
-
-img.technology {
-    content:url("/themes/bc/assets/images/technology_icon.png");
-}
-
-img.finance-funding {
-    content:url("/themes/bc/assets/images/finance_icon.png");
-}
-
-img.stakeholders {
-    content:url("/themes/bc/assets/images/stakeholders_icon.png");
-}
-
 .center-80pc{
     width: 80%;
     margin: 0 auto;

@@ -14,25 +14,18 @@ function onStart()
     $db_categories = Db::table('rainlab_blog_categories')->get();
 
     $cat_list = array();
-
     foreach ($db_categories as $category) {
         array_push($cat_list, $category);
     }
-
     $this['categories'] = $cat_list;
 }
 ==
-
-<link rel="stylesheet" href="/themes/bc/assets/css/sitesearch-override.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <section id="sub-header">
     <div class="row top-container text-center">
         <h1 id="welcome-header">Welcome to the Business Hub</h1>
         <p>Thanks for visiting our business hub - find out information about business here.</p>
 
-        <div>
             {% component 'searchInput' %}
-        </div>
 
     </div>
 </section>
@@ -47,7 +40,7 @@ function onStart()
             {% for category in categories %}
                 <!-- Dynamically creates category 'cards', auto-newlines after 4 cards because of bootstrap columns-->
                 <div class="col-md-3 text-center">
-                    <img class="category-icon {{ category.slug }}" src="/themes/bc/assets/images/accounting_icon.png">
+                    <img class="category-icon {{ category.slug }}" src="/themes/bc/assets/images/{{ category.slug }}.png">
                     <h4>{{ category.name }}</h4>
                     <p class="category-desc">{{ category.description }}</p>
                     <a href="knowledge-hub/category/{{ category.slug }}" type="button" class="btn btn-default category-btn">Go to section</a>

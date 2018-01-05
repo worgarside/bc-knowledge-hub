@@ -38,9 +38,6 @@ function onStart()
 
         $this['category'] = $current_category;
 
-
-
-
         $master_table = DB::table('rainlab_blog_posts_categories')
                         -> join('rainlab_blog_posts', 'rainlab_blog_posts_categories.post_id', '=', 'rainlab_blog_posts.id')
                         -> join('backend_users', 'rainlab_blog_posts.user_id', '=', 'backend_users.id')
@@ -55,7 +52,6 @@ function onStart()
         foreach ($master_table as $post) {
             array_push($articles, $post);
         }
-
         $this['articles'] = $articles;
     }
 }
@@ -72,7 +68,7 @@ function onStart()
     </section>
 
     <div class="row center-80pc">
-        <section id="current-path">
+        <section id="current-path-list">
             <div class="row col-md-12">
                 <p class="current-path">
                     <a class="current-path" href="/">Home</a>
@@ -129,13 +125,8 @@ function onStart()
     </div>
 
     <section id="faqs" class="center-80pc">
-        <h2>Popular FAQs:</h2>
+        <h3 class="no-margin-top">Popular FAQs:</h3>
     </section>
-
-
-
-
-
 
 {% else %}
     {% content "404.htm" %}
