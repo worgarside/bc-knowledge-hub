@@ -17,77 +17,145 @@ function onStart() {
         array_push($cat_list, $category);
     }
     $this['categories'] = $cat_list;
+
+
+    $recent_category_slugs = DB::table('rainlab_blog_posts')
+                                -> join('rainlab_blog_posts_categories', 'rainlab_blog_posts.id', '=', 'rainlab_blog_posts_categories.post_id')
+                                -> join('rainlab_blog_categories', 'rainlab_blog_posts_categories.category_id', '=', 'rainlab_blog_categories.id')
+                                -> where('rainlab_blog_posts.published', '=', 1)
+                                -> orderBy('published_at', 'desc')
+                                -> pluck('rainlab_blog_categories.slug');
+
+    $three_recent_slugs = array();
+    foreach($recent_category_slugs as $slug) {
+        if (!in_array($slug, $three_recent_slugs)) {
+            array_push($three_recent_slugs, $slug);
+        }
+        if (sizeof($three_recent_slugs) == 3) {
+            break;
+        }
+    }
+
+    $recent_category_articles = array();
+
+    foreach( $three_recent_slugs as $slug) {
+        $current_slug = $slug;
+
+        $recent_slug_spec = DB::table('rainlab_blog_posts')
+                                -> join('rainlab_blog_posts_categories', 'rainlab_blog_posts.id', '=', 'rainlab_blog_posts_categories.post_id')
+                                -> join('rainlab_blog_categories', 'rainlab_blog_posts_categories.category_id', '=', 'rainlab_blog_categories.id')
+                                -> where('rainlab_blog_posts.published', '=', 1)
+                                -> where('rainlab_blog_categories.slug', '=', $slug)
+                                -> orderBy('published_at', 'desc')
+                                -> select(DB::raw('rainlab_blog_posts.title, rainlab_blog_posts.slug, rainlab_blog_categories.name as cat_name, rainlab_blog_categories.slug as cat_slug'))
+                                -> take(6)
+                                -> get();
+
+        array_push($recent_category_articles, $recent_slug_spec);
+    }
+
+    $this['recent_categorised_articles'] = $recent_category_articles;
+
 }
 ==
-<section id="sub-header">
-    <div class="top-container text-center homepage">
-        <h1 id="welcome-header" class="homepage">Welcome to the Business Hub</h1>
-        <p>Thanks for visiting our business hub - find out information about business here.</p>
-        {% component 'searchInput' %}
-    </div>
-</section>
-
-<section id="khub-categories">
-    <div class="text-center categories">
-        <h3>Business categories</h3>
-        <p>Select a category to view the most frequently asked questions for that section</p>
+<section id="section-header" class="homepage">
+    <div class="container">
         <div class="row">
-            <div class="center-80pc">
-
-                {% for category in categories %}
-                    <!-- Dynamically creates category 'cards', auto-newlines after 4 cards because of bootstrap columns-->
-                    <div class="col-md-3 text-center">
-                        <div class="circle {{ category.slug }}-circle"></div>
-                        <h4>{{ category.name }}</h4>
-                        <p class="category-desc">{{ category.description }}</p>
-                        <a href="knowledge-hub/{{ category.slug }}" type="button" class="btn btn-default category-btn">Go to section</a>
-                    </div>
-                {% endfor %}
+            <div class="col-md-12">
+                <div class="text-center">
+                    <h1 id="welcome-to-the-busin">Welcome to the Business Hub</h1>
+                    <p id="thanks-for-visiting">Thanks for visiting our business hub - find out information about business here.</p>
+                    {% component 'searchInput' %}
+                </div>
             </div>
         </div>
     </div>
 </section>
 
+<section id="khub-categories">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="homepage">Business categories</h3>
+                <p>Select a category to view the most frequently asked questions for that section</p>
+            </div>
+        </div>
+        <div class="row" id="category-cards">
+            {% for category in categories %}
+                <!-- Dynamically creates category 'cards', auto-newlines after 4 cards because of bootstrap columns-->
+                <div class="col-md-3 text-center">
+                    <div class="circle {{ category.slug }}-circle"></div>
+                    <h4>{{ category.name }}</h4>
+                    <p class="category-desc">{{ category.description }}</p>
+                    <a href="knowledge-hub/{{ category.slug }}" type="button" class="btn btn-default category-btn">Go to section</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
 <section id="khub-recent-knowledge">
-    <div class="row center-80pc">
-        <h3>Most recent knowledge</h3>
-        <p>Take a look at the most recent knowledge articles here</p>
-
-        <div class="col-md-4">
-            <h4 class="pink-text">Accounting</h4>
-            <ul>
-                <li class="arrow-bullet pink-bullet">VAT: How does it affect my small business?</li>
-                <li class="arrow-bullet pink-bullet">What do I do if my business is failing?</li>
-                <li class="arrow-bullet pink-bullet">What's an Individual Voluntary Arrangement?</li>
-                <li class="arrow-bullet pink-bullet">Can you actually save money on Business Tax?</li>
-                <li class="arrow-bullet pink-bullet">Can High Street stores really win against online shopping?</li>
-                <li class="arrow-bullet pink-bullet">How to transfer your business assets</li>
-            </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="homepage">Most recent knowledge</h3>
+                <p>Take a look at the most recent knowledge articles here</p>
+            </div>
         </div>
 
-        <div class="col-md-4">
-            <h4 class="green-text">Finance & Funding</h4>
-            <ul>
-                <li class="arrow-bullet green-bullet">VAT: How does it affect my small business?</li>
-                <li class="arrow-bullet green-bullet">What do I do if my business is failing?</li>
-                <li class="arrow-bullet green-bullet">What's an Individual Voluntary Arrangement?</li>
-                <li class="arrow-bullet green-bullet">Can you actually save money on Business Tax?</li>
-                <li class="arrow-bullet green-bullet">Can High Street stores really win against online shopping?</li>
-                <li class="arrow-bullet green-bullet">How to transfer your business assets</li>
-            </ul>
+        <div class="row">
+            {% for article_array in recent_categorised_articles %}
+                <div class="col-md-4">
+                <h4 class="recent-knowledge" id="recent-{{ article_array[0].cat_slug }}">{{ article_array[0].cat_name }}</h4>
+                <ul>
+                    {% for article in article_array %}
+                        <li class="arrow-bullet {{ article.cat_slug }}-bullet"><a href="/knowledge-hub/{{ article.cat_slug }}/{{ article.slug }}">{{ article.title }}</a></li>
+                    {% endfor %}
+                </ul>
+                </div>
+            {% endfor %}
         </div>
 
-        <div class="col-md-4">
-            <h4 class="yellow-text">Legal</h4>
-            <ul>
-                <li class="arrow-bullet yellow-bullet">VAT: How does it affect my small business?</li>
-                <li class="arrow-bullet yellow-bullet">What do I do if my business is failing?</li>
-                <li class="arrow-bullet yellow-bullet">What's an Individual Voluntary Arrangement?</li>
-                <li class="arrow-bullet yellow-bullet">Can you actually save money on Business Tax?</li>
-                <li class="arrow-bullet yellow-bullet">Can High Street stores really win against online shopping?</li>
-                <li class="arrow-bullet yellow-bullet">How to transfer your business assets</li>
-            </ul>
-        </div>
+
+
+
+        {#<div class="row">#}
+            {#<div class="col-md-4">#}
+                {#<h4 class="recent-knowledge" id="recent-accounting-heading">Accounting</h4>#}
+                {#<ul>#}
+                    {#<li class="arrow-bullet pink-bullet">VAT: How does it affect my small business?</li>#}
+                    {#<li class="arrow-bullet pink-bullet">What do I do if my business is failing?</li>#}
+                    {#<li class="arrow-bullet pink-bullet">What's an Individual Voluntary Arrangement?</li>#}
+                    {#<li class="arrow-bullet pink-bullet">Can you actually save money on Business Tax?</li>#}
+                    {#<li class="arrow-bullet pink-bullet">Can High Street stores really win against online shopping?</li>#}
+                    {#<li class="arrow-bullet pink-bullet">How to transfer your business assets</li>#}
+                {#</ul>#}
+            {#</div>#}
+
+            {#<div class="col-md-4">#}
+                {#<h4 class="green-text">Finance & Funding</h4>#}
+                {#<ul>#}
+                    {#<li class="arrow-bullet green-bullet">VAT: How does it affect my small business?</li>#}
+                    {#<li class="arrow-bullet green-bullet">What do I do if my business is failing?</li>#}
+                    {#<li class="arrow-bullet green-bullet">What's an Individual Voluntary Arrangement?</li>#}
+                    {#<li class="arrow-bullet green-bullet">Can you actually save money on Business Tax?</li>#}
+                    {#<li class="arrow-bullet green-bullet">Can High Street stores really win against online shopping?</li>#}
+                    {#<li class="arrow-bullet green-bullet">How to transfer your business assets</li>#}
+                {#</ul>#}
+            {#</div>#}
+
+            {#<div class="col-md-4">#}
+                {#<h4 class="yellow-text">Legal</h4>#}
+                {#<ul>#}
+                    {#<li class="arrow-bullet yellow-bullet">VAT: How does it affect my small business?</li>#}
+                    {#<li class="arrow-bullet yellow-bullet">What do I do if my business is failing?</li>#}
+                    {#<li class="arrow-bullet yellow-bullet">What's an Individual Voluntary Arrangement?</li>#}
+                    {#<li class="arrow-bullet yellow-bullet">Can you actually save money on Business Tax?</li>#}
+                    {#<li class="arrow-bullet yellow-bullet">Can High Street stores really win against online shopping?</li>#}
+                    {#<li class="arrow-bullet yellow-bullet">How to transfer your business assets</li>#}
+                {#</ul>#}
+            {#</div>#}
+        {#</div>#}
     </div>
 </section>
 <script type="text/javascript">

@@ -1,0 +1,228 @@
+body {
+    overflow-x: hidden;
+}
+
+p {
+    font-family: "Roboto", "sans-serif";
+    font-size: 15px;
+    color: #505050;
+    font-weight: 400;
+}
+
+h3 {
+    color: #505050;
+    font-family: "Roboto", "sans-serif";
+    font-size: 25px;
+    font-weight: 900;
+    line-height: 33px;
+}
+
+h4 {
+    color: #505050;
+    font-family: "Roboto", "sans-serif";
+    font-size: 18px;
+    line-height: 24px;
+}
+
+/* ----- Homepage ----- */
+
+#section-header {
+    margin: 0;
+    width: 100%;
+    background-color: #009595;
+    height: 320px;
+    border-bottom: 5px solid #4AC6C5;
+}
+
+#section-header.homepage {
+    background-image: url("/themes/bc/assets/images/bc_building-background.png");
+    background-repeat: no-repeat;
+    background-position: 540px bottom;
+    background-size: 749px 212px;
+}
+
+#welcome-to-the-busin {
+    margin-top: 60px;
+    color: #FFFFFF;
+    font-family: "Changa One", "sans-serif";
+    font-size: 42px;
+    letter-spacing: 1px;
+}
+
+#thanks-for-visiting {
+    color: #FFFFFF;
+    font-family: "Roboto", "sans-serif";
+    font-size: 19px;
+    font-weight: 300;
+    line-height: 25px;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+}
+
+/* ----- Categories ----- */
+
+#khub-categories {
+    background-color: #f7f7f7;
+}
+
+h3.homepage {
+    margin-top: 50px;
+}
+
+#category-cards {
+    margin-top: 40px;
+}
+
+.category-desc {
+    margin-bottom: 0;
+}
+
+.category-btn {
+    margin: 20px auto 70px auto;
+    height: 40px;
+    width: 130px;
+    padding: 10px;
+    border: 1px solid #505050;
+    border-radius: 30px;
+    background-color: #FFFFFF;
+    font-weight: 700;
+    color: #505050;
+}
+
+/* ----- Category Icon Creation ----- */
+
+.circle {
+    width: 120px;
+    height: 120px;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+    margin: 0 auto 30px auto;
+}
+
+.accounting-circle {
+    background-color: #F44165;
+    background-image: url("/themes/bc/assets/images/accounting-icon.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.business-growth-circle {
+    background-color: #48C6C5;
+    background-image: url("/themes/bc/assets/images/business-growth-icon.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.client-customers-circle {
+    background-color: #f6af01;
+    background-image: url("/themes/bc/assets/images/client-customers-icon.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.legal-circle {
+    background-color: #ff6600;
+    background-image: url("/themes/bc/assets/images/legal-icon.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.marketing-sales-circle {
+    background-color: #4a90e2;
+    background-image: url("/themes/bc/assets/images/marketing-sales-icon.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.technology-circle {
+    background-color: #9013fe;
+    background-image: url("/themes/bc/assets/images/technology-icon.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.finance-funding-circle {
+    background-color: #009595;
+    background-image: url("/themes/bc/assets/images/finance-funding-icon.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.stakeholders-circle {
+    background-color: #8b572a;
+    background-image: url("/themes/bc/assets/images/stakeholders-icon.png");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* ----- Recent Knowledge ----- */
+
+h4.recent-knowledge {
+    margin-top: 30px;
+    font-weight: 700;
+}
+
+li.arrow-bullet, .arrow-bullet {
+    display: block;
+    margin: 10px 0 10px -23px;
+}
+
+li.arrow-bullet:before, .arrow-bullet:before {
+    content: "\e080";
+    font-family: 'Glyphicons Halflings', 'sans-serif';
+    font-size: 9px;
+    float: left;
+    margin-top: 4px;
+    margin-left: -17px;
+}
+
+#recent-accounting, li.accounting-bullet:before {
+    color: #F44165;
+}
+
+#recent-business-growth, li.business-growth-bullet:before {
+    color: #48C6C5;
+}
+
+#recent-client-customers, li.client-customers-bullet:before {
+    color: #f6af01;
+}
+
+#recent-legal, li.legal-bullet:before {
+    color: #ff6600;
+}
+
+#recent-marketing-sales, li.marketing-sales-bullet:before {
+    color: #4a90e2;
+}
+
+#recent-technology, li.technology-bullet:before {
+    color: #9013fe;
+}
+
+#recent-finance-funding, li.finance-funding-bullet:before {
+    color: #009595;
+}
+
+#recent-stakeholders, li.stakeholders-bullet:before {
+    color: #8b572a;
+}
+
+/* ----- Footer ----- */
+
+#footer-logo {
+    height: 32px;
+}
+
+.footer-links{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-links li{
+    display: inline;
+    margin: 0 20px;
+}
+

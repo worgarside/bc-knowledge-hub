@@ -7,12 +7,16 @@ class CustomBlogSearchProvider extends ResultsProvider
     public function search()
     {
         $matching = DB::table('rainlab_blog_posts')
-            ->join('rainlab_blog_posts_categories', 'rainlab_blog_posts.id', '=', 'rainlab_blog_posts_categories.post_id')
-            ->join('rainlab_blog_categories', 'rainlab_blog_posts_categories.category_id', '=', 'rainlab_blog_categories.id')
-            ->select(DB::raw('rainlab_blog_posts.*, rainlab_blog_categories.name as cat_name,  rainlab_blog_categories.slug as cat_slug'))
-            -> where('title', 'like', "%{$this->query}%")
-            -> orWhere('content', 'like', "%{$this->query}%")
-            ->get();
+            -> join('rainlab_blog_posts_categories', 'rainlab_blog_posts.id', '=', 'rainlab_blog_posts_categories.post_id')
+            -> join('rainlab_blog_categories', 'rainlab_blog_posts_categories.category_id', '=', 'rainlab_blog_categories.id')
+            -> select(DB::raw('rainlab_blog_posts.*, rainlab_blog_categories.name as cat_name,  rainlab_blog_categories.slug as cat_slug'))
+            -> where('rainlab_blog_posts.published', '=', 1)
+            ->where(function($query){
+                return $query
+                    -> where('title', 'like', "%{$this->query}%")
+                    -> orWhere('content', 'like', "%{$this->query}%");
+            })
+            -> get();
 
         foreach ($matching as $match) {
             $result            = $this->newResult();
