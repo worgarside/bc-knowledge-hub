@@ -232,7 +232,7 @@ h4.ss-autocomplete-result__title a:before{
     font-family: 'Glyphicons Halflings', 'sans-serif';
     font-size: 9px;
     float: left;
-    margin-top: 4px;
+    margin-top: -1px;
     margin-left: -18px;
     color: #f44165;
 }
