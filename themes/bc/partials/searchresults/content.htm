@@ -1,17 +1,3 @@
-{# Some results contain meta information.     #}
-{# You can access it using result.meta.       #}
-{# To find out from which plugin the result   #}
-{# was returned you can use result.identifier #}
-{# Some results contain the original model.   #}
-{# You can access it using result.model       #}
-
-
-<h2><a class="article-title" href="{{ result.url }}" >{{ result.title | raw }}</a></h2>
-<p>{{ result.meta.category }}</p>
-<p class="ss-result__text">
-    {{ result.excerpt | raw }}
-</p>
-
-<p class="ss-result__url">
-    <a href="{{ result.url }}" class="ss-result__link">{{ __SELF__.visitPageMessage }} &rarr;</a>
-</p>
+<h2 class="article-title result-article"><a href="{{ result.url }}" >{{ result.title | raw }}</a></h2>
+<p class="excerpt">{{ result.excerpt | raw }}</p>
+<p><a href="{{ result.url }}" class="ss-result__link">{{ __SELF__.visitPageMessage }} &rarr;</a></p>

@@ -68,85 +68,78 @@ function onStart()
     }
 }
 ==
-<img src="/themes/bc/assets/images/accounting-icon.png"/>
 {% if (article.title != NULL) %}
 
     <section id="section-header">
-        <div class="row top-container col-md-12">
-            <div class="center-80pc">
-                <h1 id="category-header">{{ category.name }}</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 id="category-header">{{ category.name }}</h1>
+                </div>
             </div>
         </div>
     </section>
 
-    <div class="row center-80pc">
-        <section id="current-path">
-            <div class="row col-md-12">
-                <p class="current-path">
-                    <a class="current-path" href="/">Home</a>
-                    <span class="glyphicon glyphicon-chevron-right current-path"></span>
-                    <a class="current-path" href="/knowledge-hub">The Business Hub</a>
-                    <span class="glyphicon glyphicon-chevron-right current-path"></span>
-                    <a class="current-path" href="/knowledge-hub/{{ category.slug }}">{{ category.name }}</a>
-                    <span class="glyphicon glyphicon-chevron-right current-path"></span>
-                    <a class="current-path" href="/knowledge-hub/{{ category.slug }}">Articles</a>
-                    <span class="glyphicon glyphicon-chevron-right current-path"></span>
-                    {% if (article.title|length > 20) %}
-                        {% set sliced_title = article.title|slice(0, 20) ~ '...' %}
-                    {% else %}
-                        {% set sliced_title = article.title %}
-                    {% endif %}
-                    {{ sliced_title }}
-                </p>
-            </div>
-        </section>
-        <div class="col-md-8">
-            <section id="article">
-                <div class="row">
-                    <h2 class="article-title">{{ article.title }}</h2>
-                </div>
-                <div class="row">
-                    <p>Author: <strong>{{ article.first_name }} {{ article.last_name }}</strong></p>
-                </div>
-                <br>
-                <div class="row">
-                    {{ article.content_html|raw }}
-                </div>
-            </section>
-        </div>
-        <div class="col-md-offset-1 col-md-3">
-            <section id="category-sidebar">
-                <h3 class="no-margin-top">Categories</h3>
-                <br>
-                <ul class="list-unstyled">
-                    {% set sidebar_count = 0 %}
-                    {% for category in categories %}
-                        {% set sidebar_count = sidebar_count + 1 %}
-                        <li><p style="font-size: 14pt"><a href="/knowledge-hub/{{ category.slug }}">{{ category.name }}</a></p></li>
-                        {% if (sidebar_count < category_count) %}
-                            <li><hr style="margin: 15px 0"></li>
+    <section id="breadcrumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p id="bc-breadcrumb">
+                        <a class="current-path" href="/">Home</a>
+                        <span class="glyphicon glyphicon-chevron-right current-path"></span>
+                        <a class="current-path" href="/knowledge-hub">The Business Hub</a>
+                        <span class="glyphicon glyphicon-chevron-right current-path"></span>
+                        <a class="current-path" href="/knowledge-hub/{{ category.slug }}">{{ category.name }}</a>
+                        <span class="glyphicon glyphicon-chevron-right current-path"></span>
+                        <a class="current-path" href="/knowledge-hub/{{ category.slug }}">Articles</a>
+                        <span class="glyphicon glyphicon-chevron-right current-path"></span>
+                        {% if (article.title|length > 50) %}
+                            {% set sliced_title = article.title|slice(0, 50) ~ '...' %}
                         {% else %}
-                            <br>
-                        {%  endif %}
-                    {% endfor %}
-                </ul>
-            </section>
+                            {% set sliced_title = article.title %}
+                        {% endif %}
+                        {{ sliced_title }}
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
-    <hr class="center-80pc">
-    <section id="related-articles" class="center-80pc">
-        <h3>Related Articles</h3>
-        <div class="row">
-            {% for rel_article in related_articles %}
-                <div class="col-md-4">
-                    <div class="related-article">
-                        <h2 class="no-margin-top"><a class="article-title" style="font-size: 18pt"
-                            href="/knowledge-hub/{{ category.slug }}/{{ rel_article.slug }}">
-                            {{ rel_article.title }}</a></h2>
-                        <p>Author: <strong>{{ rel_article.first_name }} {{ rel_article.last_name }}</strong></p>
+    </section>
+
+    <section id="article">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 class="article-title">{{ article.title }}</h1>
+                    <p id="article-author">Author: <strong>{{ article.first_name }} {{ article.last_name }}</strong></p>
+                    {{ article.content_html|raw }}
+                    <hr>
+                    <h3 class="related-article">Related Articles</h3>
+                    <div class="row">
+                        {% for rel_article in related_articles %}
+                            <div class="col-md-6">
+                                <div class="related-article">
+                                    <h2 class="article-title"><a href="/knowledge-hub/{{ category.slug }}/{{ rel_article.slug }}">{{ rel_article.title }}</a></h2>
+                                    <p>Author: <strong>{{ rel_article.first_name }} {{ rel_article.last_name }}</strong></p>
+                                </div>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
-            {% endfor %}
+                <div class="col-md-3 col-md-offset-1">
+                    <h3>Categories</h3>
+                    <br>
+                    <ul class="list-unstyled">
+                        {% set sidebar_count = 0 %}
+                        {% for category in categories %}
+                            {% set sidebar_count = sidebar_count + 1 %}
+                            <li><p class="sidebar"><a href="/knowledge-hub/{{ category.slug }}">{{ category.name }}</a></p></li>
+                            {% if (sidebar_count < category_count) %}
+                                <li><hr class="sidebar"></li>
+                            {%  endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 

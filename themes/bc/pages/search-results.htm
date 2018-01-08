@@ -9,25 +9,37 @@ showProviderBadge = 0
 noResultsMessage = "Your search returned no results."
 visitPageMessage = "View Article"
 ==
-<section id="sub-header">
-    <div class="top-container col-md-12" style="margin-top: -20px;"> <!-- Weird margin for search results, not sure why :/ -->
-        <div class="center-80pc">
-            <h1 id="category-header">Search Results</h1>
+<section id="section-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 id="category-header">Search Results</h1>
+            </div>
         </div>
     </div>
 </section>
 
-<div class="center-80pc">
-    <section id="current-path-list">
-        <div class="row col-md-12">
-            <p class="current-path">
-                <a class="current-path" href="/">Home</a>
-                <span class="glyphicon glyphicon-chevron-right current-path"></span>
-                <a class="current-path" href="/knowledge-hub">The Business Hub</a>
-                <span class="glyphicon glyphicon-chevron-right current-path"></span>
-                <i>"{{ searchResults.query }}"</i>
-            </p>
+<section id="breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p id="bc-breadcrumb">
+                    <a class="current-path" href="/">Home</a>
+                    <span class="glyphicon glyphicon-chevron-right current-path"></span>
+                    <a class="current-path" href="/knowledge-hub">The Business Hub</a>
+                    <span class="glyphicon glyphicon-chevron-right current-path"></span>
+                    <i>"{{ searchResults.query }}"</i>
+                </p>
+            </div>
         </div>
-    </section>
-    {% component 'searchResults' %}
-</div>
+    </div>
+</section>
+
+<section id="search-result-list">
+    <div class="container">
+        {% component 'searchResults' %}
+    </div>
+</section>
+
+
+
