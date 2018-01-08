@@ -25,17 +25,66 @@ h4 {
     line-height: 24px;
 }
 
-/* ----- Homepage ----- */
-
 #section-header {
     margin: 0;
     width: 100%;
     background-color: #009595;
-    height: 320px;
     border-bottom: 5px solid #4AC6C5;
+    height: 110px;
 }
 
+#category-header{
+    margin-top: 30px;
+    color: #FFFFFF;
+    font-family: "Changa One", "sans-serif";
+    font-size: 42px;
+    letter-spacing: 1px;
+    line-height: 45px;
+}
+
+/* ----- Category & Article Pages ----- */
+
+#breadcrumb {
+    margin-top: 20px;
+}
+
+#bc-breadcrumb {
+    font-size: 13px;
+}
+
+#bc-breadcrumb span {
+    font-size: 11px;
+    color: #4ac6c5;
+    margin: 0 5px;
+}
+
+h1.article-title a{
+    color: #4ac6c5;
+}
+
+h1.article-title a:hover{
+    color: #3f8b8a;
+    text-decoration: none;
+}
+
+.excerpt {
+    font-style: italic;
+    color: #707070;
+}
+
+p.sidebar {
+    font-size: 20px;
+}
+
+hr.sidebar {
+    margin: 15px 0;
+}
+
+
+/* ----- Homepage ----- */
+
 #section-header.homepage {
+    height: 320px;
     background-image: url("/themes/bc/assets/images/bc_building-background.png");
     background-repeat: no-repeat;
     background-position: 540px bottom;

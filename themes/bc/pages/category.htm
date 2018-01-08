@@ -58,74 +58,76 @@ function onStart() {
 ==
 {% if (valid_category) %}
 
-    <section id="sub-header">
-        <div class="top-container col-md-12">
-            <div class="center-80pc">
-                <h1 id="category-header">{{ category.name }}</h1>
-            </div>
-        </div>
-    </section>
-
-    <div class="row center-80pc">
-        <section id="current-path-list">
-            <div class="row col-md-12">
-                <p class="current-path">
-                    <a class="current-path" href="/">Home</a>
-                    <span class="glyphicon glyphicon-chevron-right current-path"></span>
-                    <a class="current-path" href="/knowledge-hub">The Business Hub</a>
-                    <span class="glyphicon glyphicon-chevron-right current-path"></span>
-                    {{ category.name }}
-                </p>
-            </div>
-        </section>
-        <div class="col-md-8">
-            <section id="recent-articles">
-                <div class="row">
-                    <h3 class="no-margin-top">Articles</h3>
-                    <p>Welcome to {{ category.name }} - here you'll find the latest articles and questions relating to {{ category.name|lower }}</p>
+    <section id="section-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 id="category-header">{{ category.name }}</h1>
                 </div>
-
-                {% for article in articles %}
-                    <div class="row">
-                        <h2 ><a class="article-title" href="/knowledge-hub/{{ category.slug }}/{{ article.slug }}">{{ article.title }}</a></h2>
-                    </div>
-                    <div class="row">
-                        <p class="article-excerpt">{{ article.excerpt }}</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 no-gutter-left">
-                            <p>Author: <strong>{{ article.first_name }} {{ article.last_name }}</strong></p>
-                        </div>
-                        <div class="col-md-4">
-                            {% set reading_time =  (article.content_html|length // 250) + 1 %}
-                            <p>Reading Time: <strong>{{ reading_time }} minutes</strong></p>
-                        </div>
-                    </div>
-                    <hr>
-                {% endfor %}
-            </section>
+            </div>
         </div>
-        <div class="col-md-offset-1 col-md-3">
-            <section id="category-sidebar">
-                <h3 class="no-margin-top">Categories</h3>
-                <br>
-                <ul class="list-unstyled">
-                    {% set sidebar_count = 0 %}
-                    {% for category in categories %}
-                        {% set sidebar_count = sidebar_count + 1 %}
-                        <li><p style="font-size: 14pt"><a href="/knowledge-hub/{{ category.slug }}">{{ category.name }}</a></p></li>
-                        {% if (sidebar_count < category_count) %}
-                            <li><hr style="margin: 15px 0"></li>
-                        {%  endif %}
-                    {% endfor %}
-                </ul>
-            </section>
-        </div>
-    </div>
-
-    <section id="faqs" class="center-80pc">
-        <h3 class="no-margin-top">Popular FAQs:</h3>
     </section>
+
+    <section id="breadcrumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p id="bc-breadcrumb">
+                        <a class="current-path" href="/">Home</a>
+                        <span class="glyphicon glyphicon-chevron-right current-path"></span>
+                        <a class="current-path" href="/knowledge-hub">The Business Hub</a>
+                        <span class="glyphicon glyphicon-chevron-right current-path"></span>
+                        {{ category.name }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="recent-articles">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3>Articles</h3>
+                    <p>Welcome to {{ category.name }} - here you'll find the latest articles and questions relating to {{ category.name|lower }}</p>
+
+                    {% for article in articles %}
+                        <div>
+                            <h1 class="article-title"><a href="/knowledge-hub/{{ category.slug }}/{{ article.slug }}">{{ article.title }}</a></h1>
+                            <p class="excerpt">{{ article.excerpt }}</p>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <p>Author: <strong>{{ article.first_name }} {{ article.last_name }}</strong></p>
+                                </div>
+                                <div class="col-md-8">
+                                    {% set reading_time =  (article.content_html|split(' ')|length // 250) + 1 %}
+                                    <p>Reading Time: <strong>{{ reading_time }} minutes</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    {% endfor %}
+                </div>
+                <div class="col-md-3 col-md-offset-1">
+                    <h3>Categories</h3>
+                    <br>
+                    <ul class="list-unstyled">
+                        {% set sidebar_count = 0 %}
+                        {% for category in categories %}
+                            {% set sidebar_count = sidebar_count + 1 %}
+                            <li><p class="sidebar"><a href="/knowledge-hub/{{ category.slug }}">{{ category.name }}</a></p></li>
+                            {% if (sidebar_count < category_count) %}
+                                <li><hr class="sidebar"></li>
+                            {%  endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 
 {% else %}
     {% content "404.htm" %}
