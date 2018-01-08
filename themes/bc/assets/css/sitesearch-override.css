@@ -201,6 +201,9 @@ div.ss-search-form__input input {
     border-radius: 5px;
     background-color: #f0f0f0;
     outline:none;
+    background-image: url(/themes/bc/assets/images/search.png);
+    background-repeat: no-repeat;
+    background-position: 560px center;
 }
 
 div.ss-search-form__input button {
