@@ -10,6 +10,16 @@ These were [changed](https://goo.gl/obsbDC) to return custom Rainlab.Blog post r
 
 - `plugins/offline/sitesearch/classes/providers/RainlabBlogResultsProvider.php`
     - Edited `search` function just to check for `isInstalledAndEnabled` flag
+        ```
+        public function search() {
+            if ( ! $this->isInstalledAndEnabled()) {
+                return $this;
+            }
+        }
 - `plugins/rainlab/blog/Plugin.php`
-    - Added `use CustomBlogSearchProvider`
+    - Added `use CustomBlogSearchProvider;`
     - Added `offline.sitesearch` listener to return custom provider
+        ```
+        Event::listen('offline.sitesearch.extend', function () {
+             return new CustomBlogSearchProvider();
+        });

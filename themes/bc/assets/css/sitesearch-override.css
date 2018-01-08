@@ -204,6 +204,7 @@ div.ss-search-form__input input {
     background-image: url(/themes/bc/assets/images/search.png);
     background-repeat: no-repeat;
     background-position: 560px center;
+    background-size: 17px 17px;
 }
 
 div.ss-search-form__input button {
