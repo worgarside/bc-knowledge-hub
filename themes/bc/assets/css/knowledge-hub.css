@@ -276,6 +276,7 @@ li.arrow-bullet:before, .arrow-bullet:before {
 /* ----- Footer ----- */
 
 #footer-logo {
+    margin-left: -20px;
     height: 32px;
 }
 
@@ -290,3 +291,10 @@ li.arrow-bullet:before, .arrow-bullet:before {
     margin: 0 20px;
 }
 
+.social {
+    display: inline;
+}
+
+.social li{
+    margin: 0 10px;
+}
