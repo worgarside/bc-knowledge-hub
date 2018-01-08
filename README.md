@@ -12,6 +12,7 @@
         - The CSS rules and icon names are based on the category slug.
     - The article can be formatted using [standard markdown formatting](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
         - The in-built controls can be used to add images, videos, audio and documents.
+    - The tag-line of the category is set by the description field of the category in the October CMS side.
 - [Offline.SiteSearch](https://octobercms.com/plugin/offline-sitesearch) is used to search the articles for keywords. It also generates the search results page.
     - It has been slightly modified to allow for correct URL generation regarding categories.
     
